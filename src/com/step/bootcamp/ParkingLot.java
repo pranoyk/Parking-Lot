@@ -2,7 +2,7 @@ package com.step.bootcamp;
 
 import java.util.HashMap;
 
-public class ParkingLot{
+public class ParkingLot {
   private final HashMap<Object, Vehicle> vehicles;
   private final int capacity;
 
@@ -34,11 +34,23 @@ public class ParkingLot{
     return vehicles.size() == capacity;
   }
 
-  public int compare(ParkingLot other) {
-    return Integer.compare(capacity, other.capacity);
-  }
-
   public boolean hasCar(Object token) {
     return vehicles.containsKey(token);
+  }
+
+  @Override
+  public String toString() {
+    return "ParkingLot{" +
+            "vehicles=" + vehicles +
+            ", capacity=" + capacity +
+            '}';
+  }
+
+  public boolean compareCapacity(ParkingLot lot) {
+    return capacity < lot.capacity;
+  }
+
+  public boolean compareVacancy(ParkingLot lot) {
+    return capacity-vehicles.size() < lot.capacity-lot.vehicles.size();
   }
 }
